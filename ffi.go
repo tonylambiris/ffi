@@ -215,9 +215,9 @@ func rtype_from_ffi(t *C.ffi_type) reflect.Type {
 		return reflect.TypeOf(float32(0))
 	case &C.ffi_type_double:
 		return reflect.TypeOf(float64(0))
-	case &C.ffi_type_longdouble:
+		// case &C.ffi_type_longdouble:
 		// FIXME!!
-		return reflect.TypeOf(complex128(0))
+		//	return reflect.TypeOf(complex128(0))
 	}
 	panic("unreachable")
 }
@@ -296,6 +296,17 @@ func (lib Library) Fct(fctname string) (Function, error) {
 	return Function(fct), nil
 }
 */
+
+func (lib Library) Symbol(fctname string) (unsafe.Pointer, error) {
+	//println("Fct(",fctname,")...")
+	sym, err := lib.handle.Symbol(fctname)
+	if err != nil {
+		return nil, err
+	}
+
+	addr := (unsafe.Pointer(sym))
+	return addr, nil
+}
 
 func (lib Library) Fct(fctname string, rtype Type, argtypes []Type) (Function, error) {
 	//println("Fct(",fctname,")...")

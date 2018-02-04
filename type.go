@@ -259,7 +259,7 @@ var (
 	C_int64           = &cffi_type{"int64", &C.ffi_type_sint64, reflect.TypeOf(int64(0))}
 	C_float           = &cffi_type{"float", &C.ffi_type_float, reflect.TypeOf(float32(0.))}
 	C_double          = &cffi_type{"double", &C.ffi_type_double, reflect.TypeOf(float64(0.))}
-	C_longdouble      = &cffi_type{"long double", &C.ffi_type_longdouble, nil}
+	// C_longdouble      = &cffi_type{"long double", &C.ffi_type_longdouble, nil}
 	C_pointer         = &cffi_type{"*", &C.ffi_type_pointer, reflect.TypeOf(nil)}
 )
 
@@ -749,7 +749,7 @@ func init() {
 	init_type(C_int64)
 	init_type(C_float)
 	init_type(C_double)
-	init_type(C_longdouble)
+	// init_type(C_longdouble)
 	init_type(C_pointer)
 
 }
