@@ -53,21 +53,21 @@ import "C"
 type Kind uint
 
 const (
-	Void       Kind = C.FFI_TYPE_VOID
-	Int        Kind = C.FFI_TYPE_INT
-	Float      Kind = C.FFI_TYPE_FLOAT
-	Double     Kind = C.FFI_TYPE_DOUBLE
-	LongDouble Kind = C.FFI_TYPE_LONGDOUBLE
-	Uint8      Kind = C.FFI_TYPE_UINT8
-	Int8       Kind = C.FFI_TYPE_SINT8
-	Uint16     Kind = C.FFI_TYPE_UINT16
-	Int16      Kind = C.FFI_TYPE_SINT16
-	Uint32     Kind = C.FFI_TYPE_UINT32
-	Int32      Kind = C.FFI_TYPE_SINT32
-	Uint64     Kind = C.FFI_TYPE_UINT64
-	Int64      Kind = C.FFI_TYPE_SINT64
-	Struct     Kind = C.FFI_TYPE_STRUCT
-	Ptr        Kind = C.FFI_TYPE_POINTER
+	Void   Kind = C.FFI_TYPE_VOID
+	Int    Kind = C.FFI_TYPE_INT
+	Float  Kind = C.FFI_TYPE_FLOAT
+	Double Kind = C.FFI_TYPE_DOUBLE
+	// LongDouble Kind = C.FFI_TYPE_LONGDOUBLE
+	Uint8  Kind = C.FFI_TYPE_UINT8
+	Int8   Kind = C.FFI_TYPE_SINT8
+	Uint16 Kind = C.FFI_TYPE_UINT16
+	Int16  Kind = C.FFI_TYPE_SINT16
+	Uint32 Kind = C.FFI_TYPE_UINT32
+	Int32  Kind = C.FFI_TYPE_SINT32
+	Uint64 Kind = C.FFI_TYPE_UINT64
+	Int64  Kind = C.FFI_TYPE_SINT64
+	Struct Kind = C.FFI_TYPE_STRUCT
+	Ptr    Kind = C.FFI_TYPE_POINTER
 	//FIXME
 	Array Kind = 255 + iota
 	Slice
@@ -84,8 +84,8 @@ func (k Kind) String() string {
 		return "Float"
 	case Double:
 		return "Double"
-	case LongDouble:
-		return "LongDouble"
+	// case LongDouble:
+	//	return "LongDouble"
 	case Uint8:
 		return "Uint8"
 	case Int8:
@@ -240,27 +240,27 @@ func (t *cffi_type) set_gotype(rt reflect.Type) {
 }
 
 var (
-	C_void       Type = &cffi_type{"void", &C.ffi_type_void, nil}
-	C_uchar           = &cffi_type{"unsigned char", &C.ffi_type_uchar, reflect.TypeOf(uint8(0))}
-	C_char            = &cffi_type{"char", &C.ffi_type_schar, reflect.TypeOf(int8(0))}
-	C_ushort          = &cffi_type{"unsigned short", &C.ffi_type_ushort, reflect.TypeOf(uint16(0))}
-	C_short           = &cffi_type{"short", &C.ffi_type_sshort, reflect.TypeOf(int16(0))}
-	C_uint            = &cffi_type{"unsigned int", &C.ffi_type_uint, reflect.TypeOf(uint(0))}
-	C_int             = &cffi_type{"int", &C.ffi_type_sint, reflect.TypeOf(int(0))}
-	C_ulong           = &cffi_type{"unsigned long", &C.ffi_type_ulong, reflect.TypeOf(uint64(0))}
-	C_long            = &cffi_type{"long", &C.ffi_type_slong, reflect.TypeOf(int64(0))}
-	C_uint8           = &cffi_type{"uint8", &C.ffi_type_uint8, reflect.TypeOf(uint8(0))}
-	C_int8            = &cffi_type{"int8", &C.ffi_type_sint8, reflect.TypeOf(int8(0))}
-	C_uint16          = &cffi_type{"uint16", &C.ffi_type_uint16, reflect.TypeOf(uint16(0))}
-	C_int16           = &cffi_type{"int16", &C.ffi_type_sint16, reflect.TypeOf(int16(0))}
-	C_uint32          = &cffi_type{"uint32", &C.ffi_type_uint32, reflect.TypeOf(uint32(0))}
-	C_int32           = &cffi_type{"int32", &C.ffi_type_sint32, reflect.TypeOf(int32(0))}
-	C_uint64          = &cffi_type{"uint64", &C.ffi_type_uint64, reflect.TypeOf(uint64(0))}
-	C_int64           = &cffi_type{"int64", &C.ffi_type_sint64, reflect.TypeOf(int64(0))}
-	C_float           = &cffi_type{"float", &C.ffi_type_float, reflect.TypeOf(float32(0.))}
-	C_double          = &cffi_type{"double", &C.ffi_type_double, reflect.TypeOf(float64(0.))}
+	C_void   Type = &cffi_type{"void", &C.ffi_type_void, nil}
+	C_uchar       = &cffi_type{"unsigned char", &C.ffi_type_uint8, reflect.TypeOf(uint8(0))}
+	C_char        = &cffi_type{"char", &C.ffi_type_sint8, reflect.TypeOf(int8(0))}
+	C_ushort      = &cffi_type{"unsigned short", &C.ffi_type_uint16, reflect.TypeOf(uint16(0))}
+	C_short       = &cffi_type{"short", &C.ffi_type_sint16, reflect.TypeOf(int16(0))}
+	C_uint        = &cffi_type{"unsigned int", &C.ffi_type_uint32, reflect.TypeOf(uint(0))}
+	C_int         = &cffi_type{"int", &C.ffi_type_sint32, reflect.TypeOf(int(0))}
+	C_ulong       = &cffi_type{"unsigned long", &C.ffi_type_uint64, reflect.TypeOf(uint64(0))}
+	C_long        = &cffi_type{"long", &C.ffi_type_sint64, reflect.TypeOf(int64(0))}
+	C_uint8       = &cffi_type{"uint8", &C.ffi_type_uint8, reflect.TypeOf(uint8(0))}
+	C_int8        = &cffi_type{"int8", &C.ffi_type_sint8, reflect.TypeOf(int8(0))}
+	C_uint16      = &cffi_type{"uint16", &C.ffi_type_uint16, reflect.TypeOf(uint16(0))}
+	C_int16       = &cffi_type{"int16", &C.ffi_type_sint16, reflect.TypeOf(int16(0))}
+	C_uint32      = &cffi_type{"uint32", &C.ffi_type_uint32, reflect.TypeOf(uint32(0))}
+	C_int32       = &cffi_type{"int32", &C.ffi_type_sint32, reflect.TypeOf(int32(0))}
+	C_uint64      = &cffi_type{"uint64", &C.ffi_type_uint64, reflect.TypeOf(uint64(0))}
+	C_int64       = &cffi_type{"int64", &C.ffi_type_sint64, reflect.TypeOf(int64(0))}
+	C_float       = &cffi_type{"float", &C.ffi_type_float, reflect.TypeOf(float32(0.))}
+	C_double      = &cffi_type{"double", &C.ffi_type_double, reflect.TypeOf(float64(0.))}
 	// C_longdouble      = &cffi_type{"long double", &C.ffi_type_longdouble, nil}
-	C_pointer         = &cffi_type{"*", &C.ffi_type_pointer, reflect.TypeOf(nil)}
+	C_pointer = &cffi_type{"*", &C.ffi_type_pointer, reflect.TypeOf(nil)}
 )
 
 type StructField struct {

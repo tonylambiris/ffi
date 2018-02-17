@@ -187,10 +187,10 @@ func rtype_from_ffi(t *C.ffi_type) reflect.Type {
 		return reflect.TypeOf(go_void{})
 	case &C.ffi_type_pointer:
 		return reflect.TypeOf(uintptr(0))
-	case &C.ffi_type_uint:
-		return reflect.TypeOf(uint(0))
-	case &C.ffi_type_sint:
-		return reflect.TypeOf(int(0))
+	// case &C.ffi_type_uint:
+	//	return reflect.TypeOf(uint(0))
+	// case &C.ffi_type_sint:
+	//	return reflect.TypeOf(int(0))
 	case &C.ffi_type_uint8:
 		return reflect.TypeOf(uint8(0))
 	case &C.ffi_type_sint8:
@@ -207,10 +207,10 @@ func rtype_from_ffi(t *C.ffi_type) reflect.Type {
 		return reflect.TypeOf(uint64(0))
 	case &C.ffi_type_sint64:
 		return reflect.TypeOf(int64(0))
-	case &C.ffi_type_ulong:
-		return reflect.TypeOf(uint64(0))
-	case &C.ffi_type_slong:
-		return reflect.TypeOf(int64(0))
+	// case &C.ffi_type_ulong:
+	//	return reflect.TypeOf(uint64(0))
+	// case &C.ffi_type_slong:
+	// 	return reflect.TypeOf(int64(0))
 	case &C.ffi_type_float:
 		return reflect.TypeOf(float32(0))
 	case &C.ffi_type_double:
